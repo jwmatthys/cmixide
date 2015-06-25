@@ -3,6 +3,7 @@ Integrated Development Environment for RTcmix
 
 ## installation
 Place the cmixide.py file and the gui folder inside your RTcmix/bin installation.
+Some Linux distributions (eg. Ubuntu) don't include the Tkinter python library. You will need to `apt-get install python-tkinter`
 
 ## running
 Just type:
