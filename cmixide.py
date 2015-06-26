@@ -289,9 +289,102 @@ def apply_tags (event=None):
 
 
 ####################################################
+
+root = Tk()
+
+img1 = PhotoImage("frameFocusBorder", data="""
+R0lGODlhQABAAPcAAHx+fMTCxKSipOTi5JSSlNTS1LSytPTy9IyKjMzKzKyq
+rOzq7JyanNza3Ly6vPz6/ISChMTGxKSmpOTm5JSWlNTW1LS2tPT29IyOjMzO
+zKyurOzu7JyenNze3Ly+vPz+/OkAKOUA5IEAEnwAAACuQACUAAFBAAB+AFYd
+QAC0AABBAAB+AIjMAuEEABINAAAAAHMgAQAAAAAAAAAAAKjSxOIEJBIIpQAA
+sRgBMO4AAJAAAHwCAHAAAAUAAJEAAHwAAP+eEP8CZ/8Aif8AAG0BDAUAAJEA
+AHwAAIXYAOfxAIESAHwAAABAMQAbMBZGMAAAIEggJQMAIAAAAAAAfqgaXESI
+5BdBEgB+AGgALGEAABYAAAAAAACsNwAEAAAMLwAAAH61MQBIAABCM8B+AAAU
+AAAAAAAApQAAsf8Brv8AlP8AQf8Afv8AzP8A1P8AQf8AfgAArAAABAAADAAA
+AACQDADjAAASAAAAAACAAADVABZBAAB+ALjMwOIEhxINUAAAANIgAOYAAIEA
+AHwAAGjSAGEEABYIAAAAAEoBB+MAAIEAAHwCACABAJsAAFAAAAAAAGjJAGGL
+AAFBFgB+AGmIAAAQAABHAAB+APQoAOE/ABIAAAAAAADQAADjAAASAAAAAPiF
+APcrABKDAAB8ABgAGO4AAJAAqXwAAHAAAAUAAJEAAHwAAP8AAP8AAP8AAP8A
+AG0pIwW3AJGSAHx8AEocI/QAAICpAHwAAAA0SABk6xaDEgB8AAD//wD//wD/
+/wD//2gAAGEAABYAAAAAAAC0/AHj5AASEgAAAAA01gBkWACDTAB8AFf43PT3
+5IASEnwAAOAYd+PuMBKQTwB8AGgAEGG35RaSEgB8AOj/NOL/ZBL/gwD/fMkc
+q4sA5UGpEn4AAIg02xBk/0eD/358fx/4iADk5QASEgAAAALnHABkAACDqQB8
+AMyINARkZA2DgwB8fBABHL0AAEUAqQAAAIAxKOMAPxIwAAAAAIScAOPxABIS
+AAAAAIIAnQwA/0IAR3cAACwAAAAAQABAAAAI/wA/CBxIsKDBgwgTKlzIsKFD
+gxceNnxAsaLFixgzUrzAsWPFCw8kDgy5EeQDkBxPolypsmXKlx1hXnS48UEH
+CwooMCDAgIJOCjx99gz6k+jQnkWR9lRgYYDJkAk/DlAgIMICZlizat3KtatX
+rAsiCNDgtCJClQkoFMgqsu3ArBkoZDgA8uDJAwk4bGDmtm9BZgcYzK078m4D
+Cgf4+l0skNkGCg3oUhR4d4GCDIoZM2ZWQMECyZQvLMggIbPmzQIyfCZ5YcME
+AwFMn/bLLIKBCRtMHljQQcDV2ZqZTRDQYfWFAwMqUJANvC8zBhUWbDi5YUAB
+Bsybt2VGoUKH3AcmdP+Im127xOcJih+oXsEDdvOLuQfIMGBD9QwBlsOnzcBD
+hfrsuVfefgzJR599A+CnH4Hb9fcfgu29x6BIBgKYYH4DTojQc/5ZGGGGGhpU
+IYIKghgiQRw+GKCEJxZIwXwWlthiQyl6KOCMLsJIIoY4LlQjhDf2mNCI9/Eo
+5IYO2sjikX+9eGCRCzL5V5JALillY07GaOSVb1G5ookzEnlhlFx+8OOXZb6V
+5Y5kcnlmckGmKaaMaZrpJZxWXjnnlmW++WGdZq5ZXQEetKmnlxPgl6eUYhJq
+KKOI0imnoNbF2ScFHQJJwW99TsBAAAVYWEAAHEQAZoi1cQDqAAeEV0EACpT/
+JqcACgRQAW6uNWCbYKcyyEwGDBgQwa2tTlBBAhYIQMFejC5AgQAWJNDABK3y
+loEDEjCgV6/aOcYBAwp4kIF6rVkXgAEc8IQZVifCBRQHGqya23HGIpsTBgSU
+OsFX/PbrVVjpYsCABA4kQCxHu11ogAQUIOAwATpBLDFQFE9sccUYS0wAxD5h
+4DACFEggbAHk3jVBA/gtTIHHEADg8sswxyzzzDQDAAEECGAQsgHiTisZResN
+gLIHBijwLQEYePzx0kw37fTSSjuMr7ZMzfcgYZUZi58DGsTKwbdgayt22GSP
+bXbYY3MggQIaONDzAJ8R9kFlQheQQAAOWGCAARrwdt23Bn8H7vfggBMueOEG
+WOBBAAkU0EB9oBGUdXIFZJBABAEEsPjmmnfO+eeeh/55BBEk0Ph/E8Q9meQq
+bbDABAN00EADFRRQ++2254777rr3jrvjFTTQwQCpz7u6QRut5/oEzA/g/PPQ
+Ry/99NIz//oGrZpUUEAAOw==""")
+
+img2 = PhotoImage("frameBorder", data="""
+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""")
+
+style = ttk.Style()
+
+style.element_create("RoundedFrame", "image", "frameBorder",
+    ("focus", "frameFocusBorder"), border=16, sticky="nsew")
+
+style.layout("RoundedFrame", [("RoundedFrame", {"sticky": "nsew"})])
+style.configure("TEntry", borderwidth=0)
+#style.configure("TButton", background='white')
+
+frame = ttk.Frame(style="RoundedFrame", padding=10)
+
+####################################################
+
 proc = []
 lines = []
-root = Tk()
 root.title("CMIXIDE")
 root.option_add('*tearOff', False)
 menubar = Menu(root)
@@ -314,27 +407,29 @@ file_menu.add_command(label="Exit", command=file_quit)
 edit_menu.add_cascade(label = "Coming Soon!")
 help_menu.add_cascade(label = "NO HELP FOR YOU!")
 
-editor = RoomEditor(root)
-xscroll = ttk.Scrollbar(root, orient = HORIZONTAL, command = editor.xview)
-yscroll = ttk.Scrollbar(root, orient = VERTICAL, command = editor.yview)
+frame.pack(fill=BOTH, expand=1)
+
+editor = RoomEditor(frame, relief=FLAT, bd=0, highlightthickness=0)
+xscroll = ttk.Scrollbar(frame, orient = HORIZONTAL, command = editor.xview)
+yscroll = ttk.Scrollbar(frame, orient = VERTICAL, command = editor.yview)
 editor.config(xscrollcommand = xscroll.set, yscrollcommand = yscroll.set)
 editor.grid(row = 1, column = 0, columnspan=3, sticky='nsew')
 xscroll.grid(row = 2, column = 0, columnspan=3, sticky = 'ew')
 yscroll.grid(row = 1, column = 3, sticky = 'ns')
-run_button = ttk.Button(text="Play Scorefile",command=run_score)
-stop_button = ttk.Button(text="Stop Playback",command=halt_score)
+run_button = ttk.Button(frame, text="Play Scorefile",command=run_score)
+stop_button = ttk.Button(frame, text="Stop Playback",command=halt_score)
 stop_button.grid(row=3,column=2)
 run_button.grid(row=3,column=0,sticky='w')
-console_label = Label(text="PYCMIX Console Output")
+console_label = Label(frame, text="PYCMIX Console Output",bg='white')
 console_label.grid(row=3,column=1)
-output = RoomEditor(root,height=10,state=DISABLED)
-xscroll2 = ttk.Scrollbar(root, orient = HORIZONTAL, command = output.xview)
-yscroll2 = ttk.Scrollbar(root, orient = VERTICAL, command = output.yview)
+output = RoomEditor(frame,height=10,state=DISABLED,relief=GROOVE, bd=2, highlightthickness=2)
+xscroll2 = ttk.Scrollbar(frame, orient = HORIZONTAL, command = output.xview)
+yscroll2 = ttk.Scrollbar(frame, orient = VERTICAL, command = output.yview)
 output.config(xscrollcommand = xscroll2.set, yscrollcommand = yscroll2.set)
 output.grid(row = 4, column = 0, columnspan=3, sticky='nsew')
 xscroll2.grid(row = 5, column = 0, columnspan=3, sticky = 'ew')
 yscroll2.grid(row = 4, column = 3, sticky = 'ns')
-ttk.Sizegrip(root).grid(row=5,column=3)
+ttk.Sizegrip(frame).grid(row=5,column=3)
 
 editor.focus_set()
 bold_font = tkFont.Font(editor, editor.cget("font"))
@@ -342,8 +437,8 @@ bold_font.configure(weight="bold")
 editor.tag_configure("rtcmix-keywords", foreground='dark blue')
 editor.tag_configure("instrument-keywords", foreground='dark green', font=bold_font)
 
-root.rowconfigure(1,weight=1)
-root.columnconfigure(1,weight=1)
+frame.rowconfigure(1,weight=1)
+frame.columnconfigure(1,weight=1)
 try:
     editor.load(sys.argv[1])
 except (IndexError, IOError):
