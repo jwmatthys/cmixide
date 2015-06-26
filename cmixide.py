@@ -10,6 +10,7 @@ from tkFileDialog import askopenfilename
 from tkMessageBox import showwarning
 from tkFileDialog import asksaveasfilename
 from tkFileDialog import askdirectory
+from os.path import expanduser
 
 class CustomText(Text):
     '''A text widget with a new method, highlight_pattern()
@@ -264,20 +265,20 @@ def read_defaults(bindir):
         output.insert(END,"CMIX binary found!\n")
         output.config(state=DISABLED)
 
-def read_tags ():
+def read_tags (bindir):
     global rtcmix_tags, inst_tags
     try:
-        rtcmix_tags = open("gui/rtcmix.tags")
+        rtcmix_tags = open(bindir+"/gui/rtcmix.tags")
     except IOError:
         output.config(state=NORMAL)
-        output.insert(END,"rtcmix.tags file doesn\'t exist -- don't worry about this yet though")
+        output.insert(END,"rtcmix.tags file doesn\'t exist -- don't worry about this yet though\n")
         output.config(state=DISABLED)
 
     try:
-        inst_tags = open("gui/inst.tags")
+        inst_tags = open(bindir+"/gui/inst.tags")
     except IOError:
         output.config(state=NORMAL)
-        output.insert(END,"rtcmix.tags file doesn\'t exist -- don't worry about this yet though")
+        output.insert(END,"inst.tags file doesn\'t exist -- don't worry about this yet though\n")
         output.config(state=DISABLED)
 
 
@@ -459,14 +460,16 @@ editor.bind("<Command-Shift-S>", file_save_as)
 editor.bind("<Command-r>", run_score)
 editor.bind("<Command-q>", file_quit)
 editor.bind("<Command-w>", file_quit)
-editor.bind("<Control-Shift-T>", apply_tags)
+#editor.bind("<Control-Shift-T>", apply_tags)
 root.protocol("WM_DELETE_WINDOW", file_quit) # window close button
 
 CMIX = ""
 PYCMIX = ""
-#read_defaults(os.path.abspath(os.path.dirname(sys.argv[0])))
+read_defaults(os.path.abspath(os.path.dirname(sys.argv[0])))
 CMIXCMD = CMIX
 rtcmix_tags = []
 inst_tags = []
-read_tags()
+read_tags(os.path.abspath(os.path.dirname(sys.argv[0])))
+home = expanduser("~")
+os.chdir(home)
 mainloop()
