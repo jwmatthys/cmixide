@@ -10,7 +10,7 @@ Some Linux distributions (eg. Ubuntu) don't include the Tkinter python library. 
 Just `cd` to your RTcmix/bin folder and type `python cmixide.py`
 
 For convenience, you may prefer to put these files in a separate location, and then `cd` to your RTcmix/bin folder and create a symlink:  
-`ln -s [your-cmixide-folder] cmixide`  
+`ln -s [your-cmixide-folder]/cmixide.py cmixide`  
 `chmod 755 cmixide`  
 This will allow you to run cmixide from anywhere by just typing `cmixide` (as long as you have RTcmix/bin on your PATH)
 
