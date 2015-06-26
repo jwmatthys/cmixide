@@ -7,7 +7,7 @@ import os
 import subprocess
 import threading
 from tkFileDialog import askopenfilename
-from tkMessageBox import showwarning
+from tkMessageBox import showwarning, showinfo
 from tkFileDialog import asksaveasfilename
 from tkFileDialog import askdirectory
 from os.path import expanduser
@@ -239,7 +239,6 @@ def read_rc_file():
     try:
         with open(".cmixiderc") as f:
             path = f.readlines()[0]
-            print path
             return path
     except IOError:
         return ''
@@ -285,7 +284,8 @@ def read_defaults(bindir):
                     pass
     else:
         output.config(state=NORMAL)
-        output.insert(END,"CMIX binary found!\n")
+        output.insert(END,"RTcmix binaries found in {}\n\n".format(bindir))
+        output.insert(END,"Welcome to CMIXIDE. Happy RTcmix-ing!\n")
         output.config(state=DISABLED)
 
 def read_tags (bindir):
@@ -310,7 +310,6 @@ def apply_tags (event=None):
         editor.highlight_pattern(t.split('\n')[0], "rtcmix-keywords")
     for t in inst_tags:
         editor.highlight_pattern(t.split('\n')[0], "instrument-keywords")
-
 
 ####################################################
 
@@ -417,10 +416,12 @@ root.config(menu = menubar)
 file_menu = Menu(menubar)
 edit_menu = Menu(menubar)
 help_menu = Menu(menubar)
+about_menu = Menu(menubar)
 
 menubar.add_cascade(menu = file_menu, label = 'File')
 menubar.add_cascade(menu = edit_menu, label = 'Edit')
 menubar.add_cascade(menu = help_menu, label = 'Help')
+menubar.add_cascade(menu = about_menu, label = 'About')
 
 file_menu.add_command(label = 'New', command=file_new)
 file_menu.add_command(label = 'Open', command=file_open)
@@ -428,10 +429,9 @@ file_menu.add_command(label = 'Save', command=file_save)
 file_menu.add_command(label = 'Save As...', command=file_save_as)
 file_menu.add_separator()
 file_menu.add_command(label="Exit", command=file_quit)
-
-edit_menu.add_cascade(label = "Coming Soon!")
-help_menu.add_cascade(label = "NO HELP FOR YOU!")
-
+edit_menu.add_command(label = "Coming Soon!")
+help_menu.add_command(label = "NO HELP FOR YOU!")
+about_menu.add_command(label = 'About CMIXIDE', command=lambda: showinfo("CMIXIDE", "(c) 2015 by Joel Matthys"))
 frame.pack(fill=BOTH, expand=1)
 
 editor = RoomEditor(frame, relief=FLAT, bd=0, highlightthickness=0)
