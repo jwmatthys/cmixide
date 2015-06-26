@@ -431,7 +431,7 @@ file_menu.add_separator()
 file_menu.add_command(label="Exit", command=file_quit)
 edit_menu.add_command(label = "Coming Soon!")
 help_menu.add_command(label = "NO HELP FOR YOU!")
-about_menu.add_command(label = 'About CMIXIDE', command=lambda: showinfo("CMIXIDE", "(c) 2015 by Joel Matthys"))
+about_menu.add_command(label = 'About CMIXIDE', command=lambda: showinfo("CMIXIDE", "Integrated Editor for RTcmix\n\n(c) 2015 by Joel Matthys"))
 frame.pack(fill=BOTH, expand=1)
 
 editor = RoomEditor(frame, relief=FLAT, bd=0, highlightthickness=0)
