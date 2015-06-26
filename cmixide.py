@@ -235,11 +235,27 @@ def halt_score(event=None):
         except OSError:
             pass
 
+def read_rc_file():
+    try:
+        with open(".cmixiderc") as f:
+            path = f.readlines()[0]
+            print path
+            return path
+    except IOError:
+        return ''
+
 #TODO: put CMIX and PYCMIX in a class
 def read_defaults(bindir):
     global CMIX, PYCMIX
     CMIX = bindir+"/CMIX"
     PYCMIX = bindir+"/PYCMIX"
+
+    # try to read rc file
+    if not os.path.exists(CMIX):
+        bindir = read_rc_file()
+    CMIX = bindir+"/CMIX"
+    PYCMIX = bindir+"/PYCMIX"
+
     if not os.path.exists(CMIX):
         showwarning("CMIXIDE", "Could not find CMIX binary")
         try:
@@ -260,6 +276,13 @@ def read_defaults(bindir):
             except IOError:
                 showwarning("Open Directory", "Cannot open the directory.")
                 raise Cancel
+            finally:
+                try:
+                    rc = open(".cmixiderc",'w')
+                    rc.write(f)
+                    rc.close()
+                except IOError:
+                    pass
     else:
         output.config(state=NORMAL)
         output.insert(END,"CMIX binary found!\n")
