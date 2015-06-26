@@ -377,6 +377,7 @@ style.element_create("RoundedFrame", "image", "frameBorder",
 
 style.layout("RoundedFrame", [("RoundedFrame", {"sticky": "nsew"})])
 style.configure("TEntry", borderwidth=0)
+style.map("TButton", background=[('pressed',"#7B1664"),('!active',"#B4B4B4"),('active',"white")])
 #style.configure("TButton", background='white')
 
 frame = ttk.Frame(style="RoundedFrame", padding=10)
@@ -463,7 +464,7 @@ root.protocol("WM_DELETE_WINDOW", file_quit) # window close button
 
 CMIX = ""
 PYCMIX = ""
-read_defaults(os.path.abspath(os.path.dirname(sys.argv[0])))
+#read_defaults(os.path.abspath(os.path.dirname(sys.argv[0])))
 CMIXCMD = CMIX
 rtcmix_tags = []
 inst_tags = []
