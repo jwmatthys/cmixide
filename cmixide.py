@@ -126,6 +126,7 @@ def open_as():
         CMIXCMD = CMIX
     elif (extension == 'py'):
         CMIXCMD = PYCMIX
+    os.chdir (os.path.abspath(os.path.dirname(f)))
 
 def save_as():
     f = asksaveasfilename(parent=root, defaultextension=".txt")
@@ -367,7 +368,7 @@ root.protocol("WM_DELETE_WINDOW", file_quit) # window close button
 
 CMIX = ""
 PYCMIX = ""
-read_defaults(os.path.dirname(sys.argv[0]))
+read_defaults(os.path.abspath(os.path.dirname(sys.argv[0])))
 CMIXCMD = CMIX
 rtcmix_tags = []
 inst_tags = []
