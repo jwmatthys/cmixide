@@ -6,6 +6,7 @@ import ttk
 import os
 import subprocess
 import threading
+import webbrowser
 from tkFileDialog import askopenfilename
 from tkMessageBox import showwarning, showinfo
 from tkFileDialog import asksaveasfilename
@@ -177,8 +178,8 @@ def file_new(event=None):
     return "break" # don't propagate events
 
 def file_open(event=None):
+    save_if_modified()
     try:
-        save_if_modified()
         open_as()
     except Cancel:
         pass
@@ -237,7 +238,7 @@ def halt_score(event=None):
 
 def read_rc_file():
     try:
-        with open(".cmixiderc") as f:
+        with open(home+"/.cmixiderc") as f:
             path = f.readlines()[0]
             return path
     except IOError:
@@ -429,8 +430,10 @@ file_menu.add_command(label = 'Save', command=file_save)
 file_menu.add_command(label = 'Save As...', command=file_save_as)
 file_menu.add_separator()
 file_menu.add_command(label="Exit", command=file_quit)
-edit_menu.add_command(label = "Coming Soon!")
-help_menu.add_command(label = "NO HELP FOR YOU!")
+edit_menu.add_command(label="Cut", command=lambda: editor.event_generate("<<Cut>>"))
+edit_menu.add_command(label="Copy", command=lambda: editor.event_generate("<<Copy>>"))
+edit_menu.add_command(label="Paste", command=lambda: editor.event_generate("<<Paste>>"))
+help_menu.add_command(label = "Online RTcmix docs", command=lambda: webbrowser.open('http://rtcmix.org/reference'))
 about_menu.add_command(label = 'About CMIXIDE', command=lambda: showinfo("CMIXIDE", "Integrated Editor for RTcmix\n\n(c) 2015 by Joel Matthys"))
 frame.pack(fill=BOTH, expand=1)
 
@@ -488,11 +491,12 @@ root.protocol("WM_DELETE_WINDOW", file_quit) # window close button
 
 CMIX = ""
 PYCMIX = ""
+home = expanduser("~")
+print(home)
+os.chdir(home)
 read_defaults(os.path.abspath(os.path.dirname(sys.argv[0])))
 CMIXCMD = CMIX
 rtcmix_tags = []
 inst_tags = []
 read_tags(os.path.abspath(os.path.dirname(sys.argv[0])))
-home = expanduser("~")
-os.chdir(home)
 mainloop()
